@@ -72,10 +72,11 @@ class WindyGridworldEnv(Environment[WindyGridworldState, WindyGridworldAction]):
 
         next_row = row + delta_row - wind_push
         next_col = col + delta_col
-
+        
         next_row = max(0, min(self.rows - 1, next_row))
         next_col = max(0, min(self.cols - 1, next_col))
-
+        print(f"row: {row}, delta_row: {delta_row}, wind_push: {wind_push}")
+        print(f"Action: {action}, Delta: ({delta_row}, {delta_col}), Wind: {wind_push}, Next: ({next_row}, {next_col})")
         next_state = (next_row, next_col)
         done = next_state == self.goal
         return next_state, self.reward_per_step, done        
