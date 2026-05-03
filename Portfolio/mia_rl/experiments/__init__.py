@@ -9,4 +9,4 @@ from .reinforce_tictactoe import (
 )
 from .tictactoe import Policy, play_game, play_game_vs_human
 from .training import generate_episode, snapshot_blackjack_values, train_prediction_agent
-from .gridworld import run_mdp_gridworld
+from .mdp_gridworld import run_mdp_gridworld

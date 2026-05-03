@@ -48,7 +48,7 @@ mia_rl/
   - `ACTIONS`
   - `ACTION_TO_DELTA`
 
-- `mia_rl/experiments/gridworld.py`  
+- `mia_rl/experiments/mdp_gridworld.py`  
   - corre os exemplos principais do notebook
   - grava os graficos em `mia_rl/outputs/mdp_gridworld`
 
