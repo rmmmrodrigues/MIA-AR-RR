@@ -6,7 +6,15 @@ Este ficheiro documenta a divisao do notebook `notebooks/MDP_GridWorld.ipynb` pe
 
 ```text
 mia_rl/
+
+  agents/
+    planning/
+      gridworld.py
+
   envs/
+    gridworld.py
+
+  experiments/
     gridworld.py
 
   policies/
@@ -22,11 +30,7 @@ mia_rl/
 
 ## Divisao dos blocos
 
-- `mia_rl/envs/gridworld.py`
-  - `Gridworld`
-  - `TrapGridworld`
-  - `ACTIONS`
-  - `ACTION_TO_DELTA`
+- `mia_rl/agents/planning/gridworld.py`
   - `zeros_V`
   - `zeros_Q`
   - `bellman_expectation_update`
@@ -38,6 +42,16 @@ mia_rl/
   - `value_iteration_stochastic`
   - `policy_evaluation_Q`  
 
+- `mia_rl/envs/gridworld.py`
+  - `Gridworld`
+  - `TrapGridworld`
+  - `ACTIONS`
+  - `ACTION_TO_DELTA`
+
+- `mia_rl/experiments/gridworld.py`  
+  - corre os exemplos principais do notebook
+  - grava os graficos em `mia_rl/outputs/mdp_gridworld`
+
 - `mia_rl/policies/gridworld.py`
   - `uniform_random_policy`
   - `greedy_policy_from_V`
@@ -46,8 +60,7 @@ mia_rl/
   - `plot_grid_values_and_policy`
 
 - `mia_rl/scripts/run_mdp_gridworld.py`
-  - corre os exemplos principais do notebook
-  - grava os graficos em `mia_rl/outputs/mdp_gridworld`
+  - mia_rl/experiments/gridworld.py
 
 ## Como executar
 
