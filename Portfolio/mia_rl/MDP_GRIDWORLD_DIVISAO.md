@@ -1,6 +1,6 @@
 # Divisao do MDP GridWorld
 
-Este ficheiro documenta a divisao do notebook `notebooks/MDP_GridWorld.ipynb` pela arquitetura do pacote `mia_rl`, seguindo o mesmo principio usado em `TicTacToe_MCTS.ipynb`: o notebook passa a importar codigo do pacote em vez de concentrar todas as classes e funcoes nas celulas.
+Este ficheiro documenta a divisao do notebook `notebooks/MDP_GridWorld.ipynb` pela arquitetura do pacote `mia_rl`: o notebook passa a importar codigo do pacote em vez de concentrar todas as classes e funcoes nas celulas.
 
 ## Estrutura criada
 
@@ -15,7 +15,7 @@ mia_rl/
     gridworld.py
 
   experiments/
-    gridworld.py
+    mdp_gridworld.py
 
   policies/
     gridworld.py
@@ -60,7 +60,7 @@ mia_rl/
   - `plot_grid_values_and_policy`
 
 - `mia_rl/scripts/run_mdp_gridworld.py`
-  - mia_rl/experiments/gridworld.py
+  - mia_rl/experiments/mdp_gridworld.py
 
 ## Como executar
 

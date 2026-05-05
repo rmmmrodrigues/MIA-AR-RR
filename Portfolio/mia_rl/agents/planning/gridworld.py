@@ -1,6 +1,7 @@
 import numpy as np
 from typing import Dict, Tuple, List
 
+from mia_rl.policies.gridworld import policy_improvement, uniform_random_policy
 from mia_rl.envs.gridworld import ACTIONS, LEFT_OF, RIGHT_OF, Gridworld
 
 
@@ -192,3 +193,42 @@ def value_iteration_stochastic(env: Gridworld, gamma: float, theta: float=1e-6, 
         if delta < theta:
             return V, it+1
     return V, max_iters
+
+# ======================================
+# POLICY ITERATION
+# ======================================
+
+def policy_iteration(env: Gridworld, gamma: float = 0.9, theta: float = 1e-8, max_outer: int = 100):
+    # Start from a random (stochastic) policy, but we will keep a deterministic action-view for stability checks.
+    pi_stochastic = uniform_random_policy(env)
+    pi_actions = {s: ("·" if env.is_terminal(s) else None) for s in env.states()}
+
+    history = []
+
+    for outer in range(max_outer):
+        # 1) Evaluate current (stochastic) policy (inner loop)
+        V, iters = policy_evaluation(env, pi_stochastic, gamma=gamma, theta=theta)
+
+        # 2) Improve: produce a deterministic greedy policy
+        new_actions, stable = policy_improvement(env, V, old_policy_actions=pi_actions, gamma=gamma)
+
+        history.append((outer, iters, V.copy(), new_actions.copy()))
+
+        # Update policy representation
+        pi_actions = new_actions
+
+        # Convert deterministic actions into a stochastic dict π(a|s)
+        pi_stochastic = {}
+        for s in env.states():
+            if env.is_terminal(s):
+                pi_stochastic[s] = {a: 0.0 for a in ACTIONS}
+            else:
+                chosen = pi_actions[s]
+                pi_stochastic[s] = {a: (1.0 if a == chosen else 0.0) for a in ACTIONS}
+
+        if stable:
+            return V, pi_actions, history
+
+    return V, pi_actions, history
+
+    pi_actions = {s: ("·" if env.is_terminal(s) else None) for s in env.states()}
