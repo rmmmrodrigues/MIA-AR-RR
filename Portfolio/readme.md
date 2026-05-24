@@ -6,16 +6,16 @@
 
 ## Índice
 
-1. [Objetivo do Repositório](#objetivo-do-repositorio)
-2. [Instalação e Execução](#instalacao-e-execucao)
-3. [Arquitetura do Package](#arquitetura-do-package)
-4. [Algoritmos Implementados](#algoritmos-implementados)
-5. [Experiências por Ambiente](#experiencias-por-ambiente)
-6. [Comparação de Algoritmos por Use Case](#comparacao-de-algoritmos-por-use-case)
+1. [Objetivo do Repositório](#1-objetivo-do-repositório)
+2. [Instalação e Execução](#2-instalação-e-execução)
+3. [Arquitetura do Package](#3-arquitetura-do-package)
+4. [Algoritmos Implementados](#4-algoritmos-implementados)
+5. [Experiências por Ambiente](#5-experiências-por-ambiente)
+6. [Comparação de Algoritmos por Use Case](#6-comparação-de-algoritmos-por-use-case)
 
 ---
 
-## Objetivo do Repositório
+## 1. Objetivo do Repositório
 
 Este repositório contém a implementação prática dos principais algoritmos estudados na unidade curricular de **Aprendizagem por Reforço (Reinforcement Learning)** da licenciatura/mestrado MIA.
 
@@ -31,7 +31,7 @@ O projeto cobre, de forma progressiva, os paradigmas centrais de RL:
 
 ---
 
-## Instalação e Execução
+## 2. Instalação e Execução
 
 ### Ambiente Conda
 
@@ -70,7 +70,7 @@ Cada script de experiência pode também aceitar argumentos de linha de comandos
 
 ---
 
-## Arquitetura do Package
+## 3. Arquitetura do Package
 
 ```
 mia_rl/
@@ -137,7 +137,7 @@ Vetores de features para aproximação de função linear:
 
 ---
 
-## Algoritmos Implementados
+## 4. Algoritmos Implementados
 
 ---
 
@@ -390,7 +390,7 @@ Para Car Rental, `q_from_v` calcula o retorno esperado usando a distribuição d
 
 ---
 
-## Experiências por Ambiente
+## 5. Experiências por Ambiente
 
 ---
 
@@ -536,7 +536,7 @@ Demonstração completa de REINFORCE em TicTacToe:
 
 ---
 
-## Comparação de Algoritmos por Use Case
+## 6. Comparação de Algoritmos por Use Case
 
 ---
 
