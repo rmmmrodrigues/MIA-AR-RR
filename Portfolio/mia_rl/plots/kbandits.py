@@ -1,24 +1,22 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+from __future__ import annotations
 
 import matplotlib.pyplot as plt
 
 from mia_rl.agents.control.kbandits import EpsilonGreedy, GradientBandit, UCB
 from mia_rl.envs.kbandits import KArmedBandit
-from mia_rl.experiments.kbandits import run_experiment
-
+from mia_rl.experiments.bandits import run_experiment
 
 # ============================================================
 # Reproduce main Sutton & Barto plots
 # ============================================================
 
-def plot_epsilon_greedy():
+def plot_epsilon_greedy(output_dir):
     steps, runs = 1000, 2000
     env = KArmedBandit()
 
     epsilons = [0, 0.01, 0.1]
 
-    # plt.figure()
+    plt.figure()
     for eps in epsilons:
         agent = EpsilonGreedy(epsilon=eps)
         rewards, _ = run_experiment(agent, env, steps, runs)
@@ -28,10 +26,11 @@ def plot_epsilon_greedy():
     plt.ylabel("Average reward")
     plt.legend()
     plt.title("ε-greedy comparison")
-    # plt.show()
+    plt.savefig(output_dir / "epsilon_greedy.png", dpi=150, bbox_inches="tight")
+    plt.show(block=False)  
 
 
-def plot_optimistic_vs_ucb():
+def plot_optimistic_vs_ucb(output_dir):
     steps, runs = 1000, 2000
     env = KArmedBandit()
 
@@ -40,7 +39,7 @@ def plot_optimistic_vs_ucb():
         "UCB c=2": UCB(c=2),
     }
 
-    # plt.figure()
+    plt.figure()
     for name, agent in agents.items():
         rewards, _ = run_experiment(agent, env, steps, runs)
         plt.plot(rewards, label=name)
@@ -49,10 +48,11 @@ def plot_optimistic_vs_ucb():
     plt.ylabel("Average reward")
     plt.legend()
     plt.title("Optimistic vs UCB")
-    # plt.show()
+    plt.savefig(output_dir / "optimistic_vs_ucb.png", dpi=150, bbox_inches="tight")
+    plt.show(block=False)  
 
 
-def plot_gradient_bandit():
+def plot_gradient_bandit(output_dir):
     steps, runs = 1000, 2000
     env = KArmedBandit()
 
@@ -62,7 +62,7 @@ def plot_gradient_bandit():
         "α=0.1 no baseline": GradientBandit(alpha=0.1, baseline=False),
     }
 
-    # plt.figure()
+    plt.figure()
     for name, agent in agents.items():
         rewards, _ = run_experiment(agent, env, steps, runs)
         plt.plot(rewards, label=name)
@@ -71,4 +71,5 @@ def plot_gradient_bandit():
     plt.ylabel("Average reward")
     plt.legend()
     plt.title("Gradient bandit methods")
-    # plt.show()
+    plt.savefig(output_dir / "gradient_bandit.png", dpi=150, bbox_inches="tight")
+    plt.show(block=False)  

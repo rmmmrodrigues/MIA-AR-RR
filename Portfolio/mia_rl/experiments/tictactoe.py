@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from mia_rl.envs.tictactoe import TicTacToeAction, TicTacToeEnv, TicTacToeState, _winner
+from mia_rl.envs.tictactoe import TicTacToeEnv, _winner
 from mia_rl.policies.tictactoe import Policy, human_policy
 
 

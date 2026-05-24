@@ -3,7 +3,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List
 from click import Tuple
-from matplotlib import pyplot as plt
 import numpy as np
 
 @dataclass(frozen=True)

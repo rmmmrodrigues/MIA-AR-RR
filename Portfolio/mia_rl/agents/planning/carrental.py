@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 from typing import Dict, Optional, Tuple
 import numpy as np
+
 from mia_rl.envs.carrental import CarRentalMDP
 
 def q_from_v(mdp: CarRentalMDP, V: np.ndarray, s: Tuple[int,int], a: int, gamma: float) -> float:

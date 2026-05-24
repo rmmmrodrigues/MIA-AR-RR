@@ -10,6 +10,8 @@ from mia_rl.envs.gridworld import Gridworld
 ARROW = {"U":"↑", "D":"↓", "L":"←", "R":"→", "·":"·"}
 
 def plot_grid_values_and_policy(
+    output_dir,
+    file_name,
     env: Gridworld,
     V: np.ndarray,
     policy: Optional[Dict[Tuple[int,int], str]] = None,
@@ -45,8 +47,10 @@ def plot_grid_values_and_policy(
                 a = policy[s] if s in policy else "·"
                 ax.text(c+0.5, r+0.78, ARROW.get(a,"·"), ha="center", va="center", fontsize=18)
 
-    plt.show()
-    return fig, ax
+    plt.savefig(output_dir / file_name, dpi=150, bbox_inches="tight") 
+
+    plt.show(block=False)    
+   
 
 def plot_grid(env: Gridworld, V: np.ndarray, policy: Optional[Dict[Tuple[int,int], str]] = None, title: str = "", ax=None):
     

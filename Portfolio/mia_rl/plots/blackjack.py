@@ -18,6 +18,8 @@ def values_to_array(values: dict[BlackjackState, float], usable_ace: bool) -> np
 
 
 def plot_value_function(
+    output_dir,
+    file_name,
     values: dict[BlackjackState, float],
     title: str = "",
     axes=None,
@@ -51,10 +53,15 @@ def plot_value_function(
     if last_im is not None:
         fig.colorbar(last_im, ax=list(axes), shrink=0.85)
 
-    return fig, axes
+    
+    plt.savefig(output_dir / file_name, dpi=150, bbox_inches="tight") 
+
+    plt.show(block=False)  
 
 
 def plot_value_difference(
+    output_dir,
+    file_name,
     values_a: dict[BlackjackState, float],
     values_b: dict[BlackjackState, float],
     title: str = "Value difference",
@@ -65,4 +72,4 @@ def plot_value_difference(
     all_states = set(values_a) | set(values_b)
     for state in all_states:
         diff_values[state] = values_a.get(state, 0.0) - values_b.get(state, 0.0)
-    return plot_value_function(diff_values, title=title, cmap="coolwarm", vmin=vmin, vmax=vmax)
+    return plot_value_function(output_dir,file_name,diff_values, title=title, cmap="coolwarm", vmin=vmin, vmax=vmax)

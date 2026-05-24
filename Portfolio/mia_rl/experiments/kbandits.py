@@ -1,27 +1,29 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+from __future__ import annotations
 
-import numpy as np
+import sys
+from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+PACKAGE_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from mia_rl.plots.kbandits import plot_epsilon_greedy, plot_gradient_bandit, plot_optimistic_vs_ucb
 
 # ============================================================
 # Experiment runner
 # ============================================================
 
-def run_experiment(agent, env, steps=1000, runs=2000):
-    rewards = np.zeros((runs, steps))
-    optimal = np.zeros((runs, steps))
+def run_kbandits():
+    output_dir = PACKAGE_ROOT / "outputs" / "kbandits"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    for r in range(runs):
-        env.reset()
-        agent.reset()
+    plot_epsilon_greedy(output_dir)
 
-        for t in range(steps):
-            action = agent.select_action()
-            reward = env.step(action)
-            agent.update(action, reward)
+    plot_optimistic_vs_ucb(output_dir)
 
-            rewards[r, t] = reward
-            optimal[r, t] = (action == env.optimal_action)
+    plot_gradient_bandit(output_dir)
 
-    return rewards.mean(axis=0), optimal.mean(axis=0)
+    print(f"Saved plots to {output_dir}")
+
+    input("Press Enter to close...")

@@ -5,7 +5,6 @@ from collections import defaultdict
 from mia_rl.core.base import Episode, PredictionAgent
 from mia_rl.envs.blackjack import BlackjackAction, BlackjackState
 
-
 class TD0Prediction(PredictionAgent[BlackjackState, BlackjackAction]):
     def __init__(self, alpha: float = 0.05, gamma: float = 1.0):
         self.alpha = alpha

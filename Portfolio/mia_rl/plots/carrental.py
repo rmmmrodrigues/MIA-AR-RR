@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Dict, Tuple
 from matplotlib import pyplot as plt
 import numpy as np
@@ -9,7 +11,7 @@ def policy_to_array(mdp: CarRentalMDP, policy: Dict[Tuple[int,int], int]) -> np.
         arr[n1, n2] = a
     return arr
 
-def plot_policy(mdp: CarRentalMDP, policy: Dict[Tuple[int,int], int], title: str = ""):
+def plot_policy(output_dir, file_name, mdp: CarRentalMDP, policy: Dict[Tuple[int,int], int], title: str = ""):
     arr = policy_to_array(mdp, policy)
 
     fig, ax = plt.subplots(figsize=(6,5))
@@ -24,17 +26,21 @@ def plot_policy(mdp: CarRentalMDP, policy: Dict[Tuple[int,int], int], title: str
             ax.text(j, i, str(arr[i,j]), ha="center", va="center", fontsize=9)
 
     fig.colorbar(im, ax=ax, shrink=0.85)
-    plt.show()
 
-    return fig
+    plt.savefig(output_dir / file_name, dpi=150, bbox_inches="tight") 
 
-def plot_values(mdp: CarRentalMDP, V: np.ndarray, title: str = ""):
+    plt.show(block=False)  
+
+
+def plot_values(output_dir, file_name, mdp: CarRentalMDP, V: np.ndarray, title: str = ""):
     fig, ax = plt.subplots(figsize=(6,5))
     im = ax.imshow(V, origin="lower")
     ax.set_title(title)
     ax.set_xlabel("# cars at location 2")
     ax.set_ylabel("# cars at location 1")
     fig.colorbar(im, ax=ax, shrink=0.85)
-    plt.show()
 
-    return fig
+    plt.savefig(output_dir / file_name, dpi=150, bbox_inches="tight") 
+
+    plt.show(block=False)  
+

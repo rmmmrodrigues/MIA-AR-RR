@@ -5,7 +5,6 @@ from collections import defaultdict
 from mia_rl.core.base import Episode, PredictionAgent
 from mia_rl.envs.blackjack import BlackjackAction, BlackjackState
 
-
 class FirstVisitMonteCarloPrediction(PredictionAgent[BlackjackState, BlackjackAction]):
     def reset(self) -> None:
         self.V = defaultdict(float) #estimated value of the state

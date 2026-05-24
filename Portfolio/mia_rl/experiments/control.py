@@ -4,7 +4,6 @@ from mia_rl.agents.control.base import ControlAgent
 from mia_rl.core.base import Transition
 from mia_rl.envs.windy_gridworld import WindyGridworldAction, WindyGridworldEnv, WindyGridworldState
 
-
 def run_control_episode(
     env: WindyGridworldEnv,
     agent: ControlAgent[WindyGridworldState, WindyGridworldAction],

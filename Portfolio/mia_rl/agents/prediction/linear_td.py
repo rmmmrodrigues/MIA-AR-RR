@@ -7,7 +7,6 @@ import numpy as np
 from mia_rl.core.base import Transition
 from mia_rl.envs.windy_gridworld import WindyGridworldState
 
-
 class LinearTD0:
     """Online TD(0) with linear function approximation.
 

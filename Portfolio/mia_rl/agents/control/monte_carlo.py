@@ -6,7 +6,6 @@ from collections import defaultdict
 from mia_rl.agents.control.base import ActionT, ControlAgent, StateT
 from mia_rl.core.base import Transition
 
-
 class MonteCarloControl(ControlAgent[StateT, ActionT]):
     def __init__(
         self,

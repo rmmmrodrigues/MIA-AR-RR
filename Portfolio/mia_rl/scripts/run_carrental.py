@@ -8,10 +8,7 @@ if str(REPO_ROOT) not in sys.path:
 def main():
     from mia_rl.experiments.carrental import run_carrental
 
-    output_dir = Path(__file__).resolve().parents[1] / "outputs" / "carrental"
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    run_carrental(output_dir)
+    run_carrental()
 
 if __name__ == "__main__":
     main()

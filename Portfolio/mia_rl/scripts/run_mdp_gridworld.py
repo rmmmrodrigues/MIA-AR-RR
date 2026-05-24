@@ -7,10 +7,8 @@ if str(REPO_ROOT) not in sys.path:
 
 def main():
     from mia_rl.experiments.mdp_gridworld import run_mdp_gridworld
-    output_dir = Path(__file__).resolve().parents[1] / "outputs" / "mdp_gridworld"
-    output_dir.mkdir(parents=True, exist_ok=True)
 
-    run_mdp_gridworld(output_dir)
+    run_mdp_gridworld()
 
 if __name__ == "__main__":
     main()

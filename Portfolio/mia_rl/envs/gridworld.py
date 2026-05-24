@@ -1,9 +1,9 @@
 from __future__ import annotations
-from typing import List, Literal, Tuple
-import numpy as np
-from dataclasses import dataclass
-from mia_rl.mdps.base import TabularMDP
 
+from typing import List, Literal, Tuple
+from dataclasses import dataclass
+
+from mia_rl.mdps.base import TabularMDP
 
 # ======================================
 # CONSTANTS

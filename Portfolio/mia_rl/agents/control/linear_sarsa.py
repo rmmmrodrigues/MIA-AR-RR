@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import random
 from typing import Callable
-
 import numpy as np
 
 from mia_rl.agents.control.base import ActionT, ControlAgent, StateT
